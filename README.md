@@ -101,3 +101,6 @@ Also add the new domain in Firebase → Authentication → Settings → Authoriz
 1. Google Search Console → add the site → paste the verification tag into the marked comment in `index.html` → submit `/sitemap.xml`.
 2. Bing Webmaster Tools → import from Search Console.
 3. Use the exact same name "AJK Nama" for Facebook, Instagram, YouTube and WhatsApp channel pages and link them to the site.
+
+## Weather by location
+The weather page asks once for your device location (browsers need HTTPS, which Vercel provides). If it is blocked, or the visitor prefers, there is a list of AJK towns (`PLACES` in `index.html`; add more as `[name, lat, lon]`). The choice is saved in the browser (`ajk_loc`) and is never written to Firestore. Coordinates are rounded to 2 decimals so Vercel can cache forecasts (`/api/weather` uses your private `OPEN_METEO_API_KEY`).

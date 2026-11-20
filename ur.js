@@ -30,7 +30,7 @@ var D={
 'Continue with Google':'گوگل کے ساتھ جاری رکھیں','or use email':'یا ای میل استعمال کریں','Email':'ای میل','Password':'پاس ورڈ','Your name':'آپ کا نام','Create new account':'نیا اکاؤنٹ بنائیں','Create account':'اکاؤنٹ بنائیں','I already have an account':'میرا اکاؤنٹ پہلے سے ہے','Forgot password?':'پاس ورڈ بھول گئے؟',
 'Account':'اکاؤنٹ','Display name':'ظاہر ہونے والا نام','Bio':'تعارف','Tell people about yourself':'لوگوں کو اپنے بارے میں بتائیں','Save profile':'پروفائل محفوظ کریں','Change password (email link)':'پاس ورڈ بدلیں (ای میل لنک)','Sign out':'سائن آؤٹ','Danger zone':'خطرناک حصہ','Delete all my posts':'میری تمام پوسٹس حذف کریں','Delete my account':'میرا اکاؤنٹ حذف کریں','Enter your password to confirm':'تصدیق کے لیے اپنا پاس ورڈ درج کریں',
 /* weather */
-'Weather in Muzaffarabad':'مظفرآباد کا موسم','Muzaffarabad':'مظفرآباد','Current weather':'موجودہ موسم','Azad Kashmir, Pakistan':'آزاد کشمیر، پاکستان','Weather, news and community for all of Azad Kashmir — in one place.':'پورے آزاد کشمیر کا موسم، خبریں اور کمیونٹی — سب ایک ہی جگہ۔',
+'Weather in Muzaffarabad':'مظفرآباد کا موسم','Muzaffarabad':'مظفرآباد','Mirpur':'میرپور','Kotli':'کوٹلی','Bagh':'باغ','Rawalakot':'راولاکوٹ','Pallandri':'پلندری','Bhimber':'بھمبر','Dadyal':'دڈیال','Hattian Bala':'ہٹیاں بالا','Athmuqam':'اٹھمقام','Sharda':'شاردہ','Tatta Pani':'تتہ پانی','Your location':'آپ کا مقام','Use my location':'میرا مقام استعمال کریں','Choose a place…':'مقام منتخب کریں…','Location is not supported on this device':'اس ڈیوائس پر مقام کی سہولت دستیاب نہیں','Location blocked. Choose a place from the list instead.':'مقام کی اجازت نہیں ملی۔ فہرست سے مقام منتخب کریں۔','Current weather':'موجودہ موسم','Azad Kashmir, Pakistan':'آزاد کشمیر، پاکستان','Weather, news and community for all of Azad Kashmir — in one place.':'پورے آزاد کشمیر کا موسم، خبریں اور کمیونٹی — سب ایک ہی جگہ۔',
 'Next 24 hours':'اگلے 24 گھنٹے','Temperature':'درجہ حرارت','Rain chance':'بارش کا امکان','Hourly forecast':'گھنٹہ وار پیش گوئی','Now':'ابھی','Smart tips':'مفید مشورے','auto':'خودکار',
 'Tips are generated from the forecast. For official warnings check PMD / NDMA.':'یہ مشورے پیش گوئی سے بنائے گئے ہیں۔ سرکاری انتباہات کے لیے PMD / NDMA دیکھیں۔','For official warnings check PMD / NDMA.':'سرکاری انتباہات کے لیے PMD / NDMA دیکھیں۔',
 '7-day forecast':'7 دن کی پیش گوئی','Forecast':'پیش گوئی','Today':'آج','Right now':'اس وقت','Sun':'سورج','Feels like':'محسوس ہوتا ہے','Humidity':'نمی','Wind':'ہوا','Pressure':'دباؤ','UV index (max)':'یو وی انڈیکس (زیادہ سے زیادہ)','Rain':'بارش',
@@ -82,7 +82,9 @@ var HIJRI=[[/muharram/,'محرم'],[/safar/,'صفر'],[/rabi.*awwal/,'ربیع �
 function hij(s){var n=s.normalize('NFD').replace(/[\u0300-\u036f\u02bb\u02bc\u02bf\u2018\u2019']/g,'').toLowerCase().replace(/[^a-z\- ]/g,'');for(var i=0;i<HIJRI.length;i++)if(HIJRI[i][0].test(n))return HIJRI[i][1];return null}
 function ap(x,h){h=+h;if(/^p/i.test(x))return(h===12||h<=3)?'دوپہر':h<=6?'شام':'رات';return(h===12||h<=3)?'رات':'صبح'}
 var R=[
-[/^What’s happening in Azad Kashmir\?$/,function(){return NAME+' میں کیا ہو رہا ہے؟'}],
+[/^What’s happening in Azad Kashmir\?$/,function(){return'آزاد کشمیر میں کیا ہو رہا ہے؟'}],
+[/^Weather in (.+)$/,function(m){return m[1]+' کا موسم'}],
+[/^Showing weather for (.+)$/,function(m){return m[1]+' کا موسم دکھایا جا رہا ہے'}],
 [/^What’s happening, (.+)\?$/,function(m){return m[1]+'، کیا ہو رہا ہے؟'}],
 [/^(\d+(?:\.\d+)?) MB$/,function(m){return'\u2066'+m[1]+' MB\u2069'}],
 [/^(\d+) listed$/,function(m){return m[1]+' درج ہیں'}],
